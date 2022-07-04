@@ -1,0 +1,9 @@
+FROM maven:3-openjdk-8 As builder
+RUN git clone https://github.com/asquarezone/spring-boot-music-store.git
+WORKDIR "/spring-boot-music-store"
+RUN mvn package
+
+FROM openjdk:8
+COPY --from=builder /spring-boot-music-store/target/musicstore-0.0.1-SNAPSHOT.war /music
+EXPOSE 8080
+CMD [ "java","-jar","/musicstore-0.0.1-SNAPSHOT.war"]
