@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: testapp
-          image: 90188/music:v1.0.0
+          image: 90188/kub:1.1
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
